@@ -1,0 +1,19 @@
+<project default="all">
+  <target name="clean">
+    <delete>
+      <fileset dir="edu" includes="**/*.class"/>
+    </delete>
+    <delete dir="dist"/>
+  </target>
+
+  <target name="build">
+    <javac srcdir="edu" debug="true" includeAntRuntime="false"/>
+  </target>
+
+  <target name="dist" depends="build">
+    <mkdir dir="dist"/>
+    <jar destfile="dist/alloy4.2.jar" basedir="." excludes="dist/**" manifest="META-INF/MANIFEST.MF"/>
+  </target>
+
+  <target name="all" depends="dist"/>
+</project>
